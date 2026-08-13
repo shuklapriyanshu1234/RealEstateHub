@@ -1,4 +1,4 @@
-# RealEstateHub CRM
+# RealEstateHub
 
 A full-stack real estate management application built with the MERN stack (MongoDB, Express, React, Node.js), TypeScript, Vite, and Tailwind CSS.
 
@@ -29,8 +29,8 @@ A full-stack real estate management application built with the MERN stack (Mongo
 
 Clone the repository:
 ```bash
-git clone https://github.com/shuklapriyanshu1234/realEstateHub-CRM.git
-cd realEstateHub-CRM
+git clone https://github.com/shuklapriyanshu1234/RealEstateHub.git
+cd RealEstateHub
 ```
 
 Install dependencies for both client and server:
@@ -63,7 +63,7 @@ npm run dev
 ## Project Structure
 
 ```
-MERN-Stack-Real-Estate-App/
+RealEstateHub/
 ├── client/          # React frontend
 │   ├── public/
 │   └── src/
