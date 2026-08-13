@@ -17,13 +17,13 @@ const Logo: FC<Props> = ({ width, fixedTheme }) => {
   if (fixedTheme === "light")
     return (
       <Link to="/">
-        <img src="/assets/logo-light.png" alt="estate-hub" width={width} />
+        <img src="/assets/logo-light.png" alt="RealEstateHub logo" width={width} />
       </Link>
     );
   else if (fixedTheme === "dark")
     return (
       <Link to="/">
-        <img src="/assets/logo-dark.png" alt="estate-hub" width={width} />
+        <img src="/assets/logo-dark.png" alt="RealEstateHub logo" width={width} />
       </Link>
     );
 
@@ -34,13 +34,13 @@ const Logo: FC<Props> = ({ width, fixedTheme }) => {
   )
     return (
       <Link to="/">
-        <img src="/assets/logo-dark.png" alt="estate-hub" width={width} />
+        <img src="/assets/logo-dark.png" alt="RealEstateHub logo" width={width} />
       </Link>
     );
 
   return (
     <Link to="/">
-      <img src="/assets/logo-light.png" alt="estate-hub" width={width} />
+      <img src="/assets/logo-light.png" alt="RealEstateHub logo" width={width} />
     </Link>
   );
 };
