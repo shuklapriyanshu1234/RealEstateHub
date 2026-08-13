@@ -35,7 +35,7 @@ const Footer = () => {
             }
           />
           <p className="text-lg mt-4 text-textColor-soft sm:text-start text-center">
-            EstateHub is a MERN-Stack real estate application. Built with React,
+            RealEstateHub is a MERN-Stack real estate application. Built with React,
             Nodejs, Express, Mongodb and Graphql.
           </p>
         </div>
@@ -86,7 +86,7 @@ const Footer = () => {
       </div>
       <div className="border-t border-borderColor">
         <div className="xl:w-2/3 lg:w-4/5 w-full py-4 lg:px-0 lg:mx-auto md:px-8 px-4 flex sm:flex-row flex-col gap-4 justify-between items-center md:text-xl text-sm ">
-          <p>© 2023 EstateHub, Inc.</p>
+          <p>© 2023 RealEstateHub, Inc.</p>
           <p>
             Created by{" "}
             <Link
