@@ -44,6 +44,11 @@ const permissions = shield({
     createDetails: isAuthenticated,
     updateDetails: isAuthenticated,
   },
-});
+},
+{
+    debug: true,
+    allowExternalErrors: true,
+  }
+);
 
 export default permissions;

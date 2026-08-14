@@ -22,9 +22,7 @@ export const useAuthStore = create<State & Actions>((set) => {
     user,
     setUser: (jwt: string) =>
       set((state) => {
-        const decoded = jwtDecode<JwtPayload & { _id: string; role: string }>(
-          jwt
-        );
+        const decoded = jwtDecode<JwtPayload & { _id: string; role: string }>(jwt);
 
         const user = {
           _id: decoded._id,
@@ -32,8 +30,14 @@ export const useAuthStore = create<State & Actions>((set) => {
         };
 
         Cookies.set("user", JSON.stringify(user), {
-          sameSite: "None",
-          expires: 1000 * 60 * 30,
+          sameSite: "Lax",
+          expires: 30 / (24 * 60),
+        });
+
+        // NEW: store the actual JWT so the server can authenticate requests
+        Cookies.set("access-token", jwt, {
+          sameSite: "Lax",
+          expires: 30 / (24 * 60),
         });
 
         return { ...state, user };
@@ -41,6 +45,7 @@ export const useAuthStore = create<State & Actions>((set) => {
     logOut: () =>
       set((state) => {
         Cookies.remove("user");
+        Cookies.remove("access-token");
         state.user = null;
 
         return { ...state };
