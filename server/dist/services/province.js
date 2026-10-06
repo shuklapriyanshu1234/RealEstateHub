@@ -1,35 +1,56 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Province_1 = __importDefault(require("../models/Province"));
 class ProvinceService {
-    static async getProvince(_id) {
-        const province = await Province_1.default.findById(_id);
-        return province;
-    }
-    static async getProvinceByCode(code) {
-        const province = await Province_1.default.findOne({ code });
-        return province;
-    }
-    static async getProvinces() {
-        const provinces = await Province_1.default.find({});
-        return provinces;
-    }
-    static async createProvince(params) {
-        const province = await Province_1.default.create(params);
-        return province;
-    }
-    static async updateProvince(params) {
-        const province = await Province_1.default.findByIdAndUpdate(params._id, params, {
-            new: true,
+    static getProvince(_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const province = yield Province_1.default.findById(_id);
+            return province;
         });
-        return province;
     }
-    static async deleteProvince(_id) {
-        const province = await Province_1.default.findByIdAndDelete(_id);
-        return province;
+    static getProvinceByCode(code) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const province = yield Province_1.default.findOne({ code });
+            return province;
+        });
+    }
+    static getProvinces() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const provinces = yield Province_1.default.find({});
+            return provinces;
+        });
+    }
+    static createProvince(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const province = yield Province_1.default.create(params);
+            return province;
+        });
+    }
+    static updateProvince(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const province = yield Province_1.default.findByIdAndUpdate(params._id, params, {
+                new: true,
+            });
+            return province;
+        });
+    }
+    static deleteProvince(_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const province = yield Province_1.default.findByIdAndDelete(_id);
+            return province;
+        });
     }
 }
 exports.default = ProvinceService;

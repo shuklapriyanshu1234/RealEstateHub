@@ -7,7 +7,7 @@ const isAuthenticated = rule()(async (_, args, context) => {
 });
 
 const isAdmin = rule()(async (_, args, context) => {
-  if (context.user.role !== "admin") return false;
+  if (!context.user || context.user.role !== "admin") return false;
 
   const user = await UserService.getUserById(context.user._id);
   return user.role === "admin";

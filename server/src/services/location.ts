@@ -15,18 +15,24 @@ export type UpdateParams = {
 
 class LocationService {
   public static async getLocation(_id: string) {
-    const location = await Location.findById(_id);
+    const location = await Location.findById(_id).populate([
+      "province",
+      "district",
+    ]);
     return location;
   }
 
   public static async getLocations() {
-    const locations = await Location.find({});
+    const locations = await Location.find({}).populate([
+      "province",
+      "district",
+    ]);
     return locations;
   }
 
   public static async createLocation(params: CreateParams) {
     const location = await Location.create(params);
-    return location;
+    return location.populate(["province", "district"]);
   }
 
   public static async updateLocation(params: UpdateParams) {

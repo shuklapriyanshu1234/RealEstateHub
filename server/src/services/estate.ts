@@ -200,24 +200,35 @@ class EstateService {
 
   public static async createEstate(params: CreateParams) {
     const estate = await Estate.create(params);
-    return estate;
+    return estate.populate(populateOptions);
   }
 
   public static async updateEstate(params: UpdateParams) {
-    const estate = await Estate.findByIdAndUpdate(params._id, params);
-    const users = await UserService.getUsersByFavorite(params._id);
+    const { _id, ...updates } = params;
+    const previousEstate = await Estate.findById(_id);
 
-    let notificationBody = { user: "", estate: params._id, message: "" };
+    const estate = await Estate.findByIdAndUpdate(_id, updates, {
+      new: true,
+    }).populate(populateOptions);
 
-    if (estate.price > params.price)
-      notificationBody.message =
-        "One of your favorite listings has decreased in price.";
-    else if (estate.price < params.price)
-      notificationBody.message =
-        "One of your favorite listings has increased in price.";
-    else
+    const users = await UserService.getUsersByFavorite(_id);
+
+    let notificationBody = { user: "", estate: _id, message: "" };
+
+    if (params.price !== undefined && previousEstate) {
+      if (previousEstate.price > params.price)
+        notificationBody.message =
+          "One of your favorite listings has decreased in price.";
+      else if (previousEstate.price < params.price)
+        notificationBody.message =
+          "One of your favorite listings has increased in price.";
+      else
+        notificationBody.message =
+          "One of your favorite listings has been updated.";
+    } else {
       notificationBody.message =
         "One of your favorite listings has been updated.";
+    }
 
     users.forEach(async (user) => {
       notificationBody.user = user._id;

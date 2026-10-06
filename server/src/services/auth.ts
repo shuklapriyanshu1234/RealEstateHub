@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { GraphQLError } from "../../node_modules/graphql";
+import { GraphQLError } from "graphql";
 
 import UserService from "./user";
 import User from "../models/User";

@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -6,23 +15,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const location_1 = __importDefault(require("../../services/location"));
 exports.default = {
     Query: {
-        async location(_, args) {
-            const location = await location_1.default.getLocation(args._id);
-            return location;
+        location(_, args) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const location = yield location_1.default.getLocation(args._id);
+                return location;
+            });
         },
-        async locations() {
-            const locations = await location_1.default.getLocations();
-            return locations;
+        locations() {
+            return __awaiter(this, void 0, void 0, function* () {
+                const locations = yield location_1.default.getLocations();
+                return locations;
+            });
         },
     },
     Mutation: {
-        async createLocation(_, args) {
-            const location = await location_1.default.createLocation(args);
-            return location;
+        createLocation(_, args) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const location = yield location_1.default.createLocation(args);
+                return location;
+            });
         },
-        async updateLocation(_, args) {
-            const location = await location_1.default.updateLocation(args);
-            return location;
+        updateLocation(_, args) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const location = yield location_1.default.updateLocation(args);
+                return location;
+            });
         },
     },
 };
